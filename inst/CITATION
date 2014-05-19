@@ -1,0 +1,24 @@
+citHeader("To cite the GLSME package in publications use:")
+
+citEntry(
+         entry="Article",
+         author=personList(
+           as.person("Thomas F. Hansen"),
+           as.person("Krzysztof Bartoszek")
+           ),
+         title="Interpreting the evolutionary regression: the interplay between observational and biological errors in phylogenetic comparative studies",
+         journal="Systematic Biology",
+         year=2012,
+         volume=61,
+         number=3,
+         pages="413--425",
+         textVersion=paste(
+         "Hansen, T. F. and Bartoszek, K.(2012)",
+	 "Interpreting the evolutionary regression: the interplay between observational and biological errors in phylogenetic comparative studies",
+	 "Syst. Biol. 61(3):413--425"
+           )
+         )
+
+citFooter("As GLSME is continually evolving, you may want to cite its version number. Find it with 'help(package=GLSME)'.")
+
+
