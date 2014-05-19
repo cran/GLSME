@@ -6,13 +6,13 @@
 The code fits the general linear model with correlated data and
 observation error in both dependent and independent variables. The code fits the
 model 
-\deqn{y = DB + r, r ~ N(0,V), V = (s^2)T + Ve + Var[UB|D],}
+\deqn{y = D\beta + r, r \sim N(0,V), V = \sigma^{2} T + V_{e} + Var[U\beta|D],}
 where \code{y} is a vector of observed response variables, \code{D} is an observed design matrix, 
-\code{B}
+\eqn{\beta}
 is a vector of regression parameters to be estimated, 
-\code{(s^2)T} is a matrix representing the true residual
-variance, \code{Ve} is a matrix
-of known measurement variance in the response variable, and \code{Var[UB|D]} is a matrix
+\eqn{\sigma^{2}}\code{T} is a matrix representing the true residual
+variance, \eqn{V_{e}} is a matrix
+of known measurement variance in the response variable, and \code{Var[U}\eqn{\beta}\code{|D]} is a matrix
 representing effects of measurement error in the predictor variables (see Hansen and Bartoszek 2012).
 }
 \details{
@@ -27,13 +27,13 @@ LazyLoad: \tab yes\cr
 The code fits the general linear model with correlated data and
 observation error in both dependent and independent variables. The code fits the
 model 
-\deqn{y = DB + r, r ~ N(0,V), V = (s^2)T + Ve + Var[UB|D],}
+\deqn{y = D\beta + r, r \sim N(0,V), V = \sigma^{2}T + V_{e} + Var[U\beta|D],}
 where \code{y} is a vector of observed response variables, \code{D} is an observed design matrix, 
-\code{B}
+\eqn{\beta}
 is a vector of regression parameters to be estimated, 
-\code{(s^2)T} is a matrix representing the true residual
-variance, \code{Ve} is a matrix
-of known measurement variance in the response variable, and \code{Var[UB|D]} is a matrix
+\eqn{\sigma^{2}}\code{T} is a matrix representing the true residual
+variance, \eqn{V_{e}} is a matrix
+of known measurement variance in the response variable, and \code{Var[U}\eqn{\beta}\code{|D]} is a matrix
 representing effects of measurement error in the predictor variables (see Hansen and Bartoszek 2012).
 
 The estimation function is \code{GLSME}. It is an iterated (if the variance parameters are unknown)

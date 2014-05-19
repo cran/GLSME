@@ -20,19 +20,18 @@ GLSME.predict(xo, glsme.estimate, vy, vx, alpha = 0.95)
 %%\details{
 %%}
 \value{
-
-prediction=yp.biascorr,MSE=mse.biascorr,CI=CI.biascorr,alpha=alpha),BiasUncorr=list(prediction=yp.biasuncorr,MSE=mse.biasuncorr,CI=CI.biasuncorr,alpha=alpha)
   \item{BiasCorr }{ Prediction using the bias corrected estimate.
   \itemize{
 	\item{prediction }{ Predicted value}
 	\item{MSE }{ Estimate of mean square error. They are calculated by the formula
-	\deqn{v_{y}+x_{o}^{T}(MSE[B | XO])x_{o}+ B'^{T} v_{x} B',}
-	where B' is the bias corrected estimate of B.
+	\deqn{v_{y}+x_{o}^{T}(MSE[\beta | XO])x_{o}+ \beta'^{T} v_{x} \beta',}
+	where \eqn{\beta'} is the bias corrected estimate of \eqn{\beta}.
 	}
-	\item{CI }{ 1-alpha level confidence intervals. They are calculated by the formula
-	\deqn{(1+1/n)^{0.5}*t_{a}*(v_{y}+ B'^{T} v_{x} B'),}
-	where t_{a} is the 1-alpha/2 level quantile of the t-distribution with n-k degrees of freedom,
-	k is the number of regression parameters to estimate, B' is the bias corrected estimate of B and n is the sample size used in 
+	\item{CI }{ \eqn{1-\alpha} level confidence intervals. They are calculated by the formula
+	\deqn{\sqrt{1+1/n}*t_{\alpha}*(v_{y}+ \beta'^{T} v_{x} \beta'),}
+	where \eqn{t_{\alpha}} is the \eqn{1-\alpha/2} level quantile of the t-distribution with n-k degrees of freedom,
+	k is the number of regression parameters to estimate, 
+	\eqn{\beta'} is the bias corrected estimate of \eqn{\beta} and n is the sample size used in 
 	the estimation.}
     }
   }
@@ -40,13 +39,13 @@ prediction=yp.biascorr,MSE=mse.biascorr,CI=CI.biascorr,alpha=alpha),BiasUncorr=l
   \itemize{
 	\item{prediction }{ Predicted value}
 	\item{MSE }{ Estimate of mean square error. They are calculated by the formula
-	\deqn{v_{y}+x_{o}^{T}(MSE[B | XO])x_{o}+ B'^{T} v_{x} B',}
-	where B' is the bias uncorrected estimate of B.
+	\deqn{v_{y}+x_{o}^{T}(MSE[\beta | XO])x_{o}+ \beta'^{T} v_{x} \beta',}
+	where \eqn{\beta'} is the bias uncorrected estimate of \eqn{\beta}.
 	}
-	\item{CI }{ 1-alpha level confidence intervals. They are calculated by the formula
-	\deqn{(1+1/n)^{0.5}*t_{a}*(v_{y}+ B'^{T} v_{x} B'),}
-	where t_{a} is the 1-alpha/2 level quantile of the t-distribution with n-k degrees of freedom,
-	k is the number of regression parameters to estimate, B' is the bias uncorrected estimate of B 
+	\item{CI }{ \eqn{1-\alpha} level confidence intervals. They are calculated by the formula
+	\deqn{\sqrt{1+1/n}*t_{\alpha}*(v_{y}+ \beta'^{T} v_{x} \beta'),}
+	where \eqn{t_{\alpha}} is the \eqn{1-\alpha/2} level quantile of the t-distribution with n-k degrees of freedom,
+	k is the number of regression parameters to estimate, \eqn{\beta'} is the bias uncorrected estimate of \eqn{\beta} 
 	and n is the sample size used in the estimation.}
     }
   }

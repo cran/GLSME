@@ -74,21 +74,26 @@ variance parameter.}
 The code fits the general linear model with correlated data and
 observation error in both dependent and independent variables. The code fits the
 model 
-\deqn{y = DB + r, r ~ N(0,V), V = (s^2)T + Ve + Var[UB|D],}
-where \code{y} is a vector of observed response variables, \code{D} is an observed design matrix, \code{B}
+\deqn{y = D\beta + r, r \sim N(0,V), V = \sigma^{2}T + V_{e} + Var[U\beta|D],}
+where \code{y} is a vector of observed response variables, \code{D} is an observed design matrix, 
+\eqn{\beta}
 is a vector of parameters to be estimated, \code{T} is a matrix representing the true residual
-variance up to a scale parameter, \code{(s^2)}, that is estimated by the program, 
-\code{Ve} is a matrix
-of known measurement variance in the response variable, and \code{Var[UB|D]} is a matrix
+variance up to a scale parameter, \eqn{\sigma^{2}}, that is estimated by the program, 
+\eqn{V_{e}} is a matrix
+of known measurement variance in the response variable, and \code{Var[U}\eqn{\beta}\code{|D]} 
+is a matrix
 representing effects of measurement error in the predictor variables (see appendix of
-Hansen and Bartoszek 2012). To build the \code{Var[UB|D]} matrix, the program needs a known measurement
-variance matrix \code{Vu} and a true variance matrix Vxt for each of the predictor variables
+Hansen and Bartoszek 2012). To build the \code{Var[U}\eqn{\beta}\code{|D]} matrix, 
+the program needs a known measurement
+variance matrix \eqn{V_{u}} and a true variance matrix \eqn{V_{xt}} 
+for each of the predictor variables
 (these will be zero for fixed effects). The true variance matrices are assumed to be on
-the form \code{Vxt = (s_x^2)Sx} , where \code{Sx} is a matrix supplied by the user, and \code{s_x^2} is a scale
+the form \eqn{V_{xt} = \sigma_{x}^{2}Sx} , where 
+\code{Sx} is a matrix supplied by the user, and \eqn{\sigma_{x}^{2}} is a scale
 parameter that the program estimates by maximum likelihood.
 
 Note that this program cannot be used to fit parameters that enter nonlinearly
-into the variance or the design matrix, as the \code{alpha} 
+into the variance or the design matrix, as the \eqn{\alpha} 
 in the adaptation-inertia model, but it
 can be used to fit the other parameters in such models conditionally on given values
 of the parameterized values of the matrices (and could hence be used as a subroutine
@@ -103,7 +108,7 @@ found to improve estimation especially of variance constants (\code{PredictorVar
 The user should try out the option with \code{CenterPredictor} \code{TRUE} and \code{FALSE} (here fixed effects will not be effected) and compare results.}
 \item{}{The program uses a Monte Carlo procedure as part of the estimation algorithm therefore the user should run the 
 code a couple of times to see stability, and combine the results by e.g. a (weighted) average or
-choose the best estimate according to e.g. the likelihood or R2.}
+choose the best estimate according to e.g. the likelihood or \eqn{R^{2}}.}
 }
 
 The program tries to recognize the structure of the \code{Vt}, \code{Ve}, \code{Vd} and \code{Vu}
@@ -139,8 +144,8 @@ the matrix variable \code{Vx} is to be a list of two values,
 \item{errorGLSestim }{ the estimates of their standard errors}
 \item{BiasCorrectedGLSestimate }{ the bias corrected estimates (centering the predictors CHANGES fixed effects)}
 \item{K }{ the bias attenuation factor matrix}
-\item{R2 }{ R^2 of the model with the GLS estimates not bias corrected}
-\item{BiasCorrectedR2 }{ R^2 of the model with the GLS estimates bias corrected}
+\item{R2 }{ \eqn{R^{2}} of the model with the GLS estimates not bias corrected}
+\item{BiasCorrectedR2 }{ \eqn{R^{2}} of the model with the GLS estimates bias corrected}
 \item{PredictorVarianceConstantEstimate }{ if \code{EstimateVariance[2]} is \code{TRUE} then the estimates of the unknown variance constants for the predictors otherwise not present}
 \item{ResponseVarianceConstantEstimate }{ if \code{EstimateVariance[1]} is \code{TRUE} then the estimate of the unknown variance constant for the response otherwise not present}
 if the \code{outputType} variable is set to \code{"long"} then the following additional fields will be in the output :
