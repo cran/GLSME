@@ -74,10 +74,10 @@ variance parameter.}
 The code fits the general linear model with correlated data and
 observation error in both dependent and independent variables. The code fits the
 model 
-\deqn{y = D\beta + r, r \sim N(0,V), V = \sigma^{2}T + V_{e} + Var[U\beta|D],}
+\deqn{y = D\beta + r, r \sim N(0,V), V = \sigma^{2}V_{t} + V_{e} + Var[U\beta|D],}
 where \code{y} is a vector of observed response variables, \code{D} is an observed design matrix, 
 \eqn{\beta}
-is a vector of parameters to be estimated, \code{T} is a matrix representing the true residual
+is a vector of parameters to be estimated, \eqn{V_{t}} is a matrix representing the true residual
 variance up to a scale parameter, \eqn{\sigma^{2}}, that is estimated by the program, 
 \eqn{V_{e}} is a matrix
 of known measurement variance in the response variable, and \code{Var[U}\eqn{\beta}\code{|D]} 
