@@ -290,7 +290,7 @@ GLSME<-function(y,D,Vt,Ve,Vd,Vu,EstimateVariance=c(TRUE,TRUE),CenterPredictor=TR
 	    for (i in 1:m){
 		if ((is.character(covmat[[i]]))&&(covmat[[i]]=="F")){covmat[[i]]<-0};
 		if (is.vector(covmat[[i]])){
-		    if((length(covmat[[i]])==m)||(length(covmat[[i]])==1)){
+		    if((length(covmat[[i]])==n)||(length(covmat[[i]])==1)){
 			vcov<-covmat[[i]]
 			covmat[[i]]<-matrix(0,n,n)
 			diag(covmat[[i]])<-vcov
@@ -307,6 +307,10 @@ GLSME<-function(y,D,Vt,Ve,Vd,Vu,EstimateVariance=c(TRUE,TRUE),CenterPredictor=TR
     if (length(which(is.complex(EigVals))>0)){print(paste("Warning : ",whichcov," matrix has complex eigenvalues!!",sep=""))}
     list(mCov,matrixtype)
 }
+
+
+
+
 
 GLSME.predict<-function(xo,glsme.estimate,vy,vx,alpha=0.95){
 
