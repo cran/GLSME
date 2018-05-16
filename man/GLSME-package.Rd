@@ -19,8 +19,8 @@ representing effects of measurement error in the predictor variables (see Hansen
 \tabular{ll}{
 Package: \tab GLSME\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2014-05-19\cr
+Version: \tab 1.0.4\cr
+Date: \tab 2018-05-16\cr
 License: \tab GPL (>= 2)\cr
 LazyLoad: \tab yes\cr
 }
@@ -77,6 +77,7 @@ Hansen, T.F. and Pienaar, J. and Orzack, S.H. (2008)
 \code{\link[mvSLOUCH]{mvSLOUCH}} 
 }
 \examples{
+\dontrun{
 library(mvSLOUCH)
 library(ape)
 library(ouch)
@@ -101,4 +102,4 @@ xerror<-diag((rnorm(n,mean=0,sd=0.1))^2) #create error matrix
 x<-rmvnorm(1,mean=x,sigma=xerror)[1,]
 GLSME(y=y, CenterPredictor=TRUE, D=cbind(rep(1, n), x), Vt=vcv(apetree), 
 Ve=yerror, Vd=list("F",vcv(apetree)), Vu=list("F", xerror))
-}
+}}

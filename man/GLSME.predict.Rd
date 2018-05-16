@@ -58,6 +58,7 @@ GLSME.predict(xo, glsme.estimate, vy, vx, alpha = 0.95)
 \author{Krzysztof Bartoszek}
 
 \examples{
+\dontrun{
 library(mvSLOUCH)
 library(ape)
 library(ouch)
@@ -83,7 +84,7 @@ x<-rmvnorm(1,mean=x,sigma=xerror)[1,]
 glsme.res<-GLSME(y=y, CenterPredictor=TRUE, D=cbind(rep(1, n), x), Vt=vcv(apetree), 
 Ve=yerror, Vd=list("F",vcv(apetree)), Vu=list("F", xerror),OutputType="long")
 GLSME.predict(c(1,1), glsme.res, vy=1, vx=rbind(c(0,0),c(0,1)))
-}
+}}
 \keyword{prediction}
 \keyword{generalized least squares}
 \keyword{regression}
