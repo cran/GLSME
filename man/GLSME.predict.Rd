@@ -51,40 +51,35 @@ GLSME.predict(xo, glsme.estimate, vy, vx, alpha = 0.95)
   }
  
 }
-%%\references{
-%% ~put references to the literature/web site here ~
-%%}
+\references{
+Hansen, T.F. and Bartoszek, K. (2012)
+  Interpreting the evolutionary regression: the interplay between observational and biological errors in phylogenetic comparative studies.
+  Systematic Biology 61(3):413-425.
+}
 
 \author{Krzysztof Bartoszek}
 
 \examples{
-\dontrun{
-library(mvSLOUCH)
-library(ape)
-library(ouch)
-n<-5 ## number of species
-apetree<-rtree(n)
-phyltree<-ape2ouch(apetree) ##mvslouch requires ouch format
-### Correct the names of the internal node labels.
-phyltree@nodelabels[1:(phyltree@nnodes-phyltree@nterm)]<-
-as.character(1:(phyltree@nnodes-phyltree@nterm))
+set.seed(12345)
+n<-3 ## number of species
+apetree<-ape::rtree(n)
 ### Define Brownian motion parameters to be able to simulate data under the Brownian motion model.
 BMparameters<-list(vX0=matrix(0,nrow=2,ncol=1),Sxx=rbind(c(1,0),c(0.2,1)))
 ### Now simulate the data and remove the values corresponding to the internal nodes.
-xydata<-simulBMProcPhylTree(phyltree,X0=BMparameters$vX0,Sigma=BMparameters$Sxx)
+xydata<-mvSLOUCH::simulBMProcPhylTree(apetree,X0=BMparameters$vX0,Sigma=BMparameters$Sxx)
 xydata<-xydata[(nrow(xydata)-n+1):nrow(xydata),]
 
 x<-xydata[,1]
 y<-xydata[,2]
 
-yerror<-diag((rnorm(n,mean=0,sd=0.1))^2) #create error matrix
-y<-rmvnorm(1,mean=y,sigma=yerror)[1,]
-xerror<-diag((rnorm(n,mean=0,sd=0.1))^2) #create error matrix
-x<-rmvnorm(1,mean=x,sigma=xerror)[1,]
-glsme.res<-GLSME(y=y, CenterPredictor=TRUE, D=cbind(rep(1, n), x), Vt=vcv(apetree), 
-Ve=yerror, Vd=list("F",vcv(apetree)), Vu=list("F", xerror),OutputType="long")
+yerror<-diag((stats::rnorm(n,mean=0,sd=0.1))^2) #create error matrix
+y<-mvtnorm::rmvnorm(1,mean=y,sigma=yerror)[1,]
+xerror<-diag((stats::rnorm(n,mean=0,sd=0.1))^2) #create error matrix
+x<-mvtnorm::rmvnorm(1,mean=x,sigma=xerror)[1,]
+glsme.res<-GLSME(y=y, CenterPredictor=TRUE, D=cbind(rep(1, n), x), Vt=ape::vcv(apetree), 
+Ve=yerror, Vd=list("F",ape::vcv(apetree)), Vu=list("F", xerror),OutputType="long")
 GLSME.predict(c(1,1), glsme.res, vy=1, vx=rbind(c(0,0),c(0,1)))
-}}
+}
 \keyword{prediction}
 \keyword{generalized least squares}
 \keyword{regression}
